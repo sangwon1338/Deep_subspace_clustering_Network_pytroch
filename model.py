@@ -25,7 +25,7 @@ class COil20_Network(nn.Module):
         self.test=test
         self.shape=[]
         
-        self.Coef = nn.Parameter(tl.tensor(np.ones((720,720))
+        self.Coef = nn.Parameter(torch.tensor(np.ones((720,720))))
 
     def forward(self, x):
        self.shape.append(x.shape)
