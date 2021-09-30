@@ -1,9 +1,6 @@
 import torch
 from torch import nn
 import torch.nn.init as init
-from tensorly.decomposition import tucker
-import tensorly as tl
-from tensorly.tucker_tensor import tucker_to_tensor
 from torch.autograd import Variable
 import numpy as np
 torch.manual_seed(0)
@@ -28,7 +25,7 @@ class COil20_Network(nn.Module):
         self.test=test
         self.shape=[]
         
-        self.Coef = nn.Parameter(tl.tensor(1e-4*tl.ones((720,720,4))))
+        self.Coef = nn.Parameter(tl.tensor(np.ones((720,720))
 
     def forward(self, x):
        self.shape.append(x.shape)
