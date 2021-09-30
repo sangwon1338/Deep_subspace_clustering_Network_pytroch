@@ -221,21 +221,5 @@ with torch.no_grad():
             best_acc = acc
             
 
-scope = [
-'https://spreadsheets.google.com/feeds',
-'https://www.googleapis.com/auth/drive',
-]
 
-json_file_name = './subspace-clustering-f0bd9c68a077.json'
-credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
-gc = gspread.authorize(credentials)
 
-spreadsheet_url = 'https://docs.google.com/spreadsheets/d/105UQEvBEmmye2JqPaoIOzheE5nLCFrMBc5hp_xdbM-0/edit#gid=0'
-doc = gc.open_by_url(spreadsheet_url)
-worksheet = doc.worksheet('COIL20')
-
-best_epoch = 50
-
-#worksheet.update_acell('A{}'.format(args.count), str(args.pre))
-worksheet.update_acell('{}{}'.format(args.name1,args.count), best_epoch)
-worksheet.update_acell('{}{}'.format(args.name2,args.count), '{:.2f}'.format(100*best_acc))
